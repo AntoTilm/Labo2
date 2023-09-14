@@ -3,22 +3,34 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">        
     <label for="pseudo">Pseudo: </label>
     <input id="pseudo" type="text" formControlName="pseudo">
-
+    <div *ngIf="userForm.get('pseudo')?.errors?.['maxlength']">Maximum 50 caractères</div>
 
     <label for="email">Email: </label>
     <input id="email" type="email" formControlName="email">
+    <div *ngIf="userForm.get('email')?.errors?.['maxlength']">Maximum 250 caractères</div>
+    <div *ngIf="userForm.get('email')?.errors?.['pattern']">
+        Format email invalide</div>
 
 
     <label for="password">Password: </label>
     <input id="password" type="text" formControlName="password">
+    <div *ngIf="userForm.get('password')?.errors?.['maxlength']">Maximum 97 caractères</div>
+    <div *ngIf="userForm.get('password')?.errors?.['pattern']">
+        Contient au moins une lettre majuscule.
+        Contient au moins une lettre minuscule.
+        Contient au moins un chiffre.
+        Contient au moins un caractère spécial.
+        A une longueur totale d'au moins 5 caractères</div>
 
 
     <label for="lastName">Last Name: </label>
     <input id="lastName" type="text" formControlName="lastName">
+    <div *ngIf="userForm.get('lastName')?.errors?.['maxlength']">Maximum 50 caractères</div>
 
 
     <label for="firstName">First Name: </label>
     <input id="firstName" type="text" formControlName="firstName">
+    <div *ngIf="userForm.get('firstName')?.errors?.['maxlength']">Maximum 50 caractères</div>
 
     <button type="submit">Submit</button>
 </form>

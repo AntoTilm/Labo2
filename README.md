@@ -25,3 +25,33 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+<!-- faire register pour créer des comptes
+
+{
+  "pseudo": "string",
+  "email": "string",
+  "password": "string",
+  "firstName": "string",
+  "lastName": "string"
+}
+
+identifier les 3 modeles à recevoir/envoyer API (les créers) Les trois modèle user, userLogin, userRegister
+
+etape 2
+
+register.ts 
+mettre en place formbuilder avec le meme nom que le model à envoyer dans la DB
+
+relier avec html formcontrol
+
+submit
+    -verifie la validité
+    - si valide : ok, sinon afficher erreurs
+    - mettre en place les messages d'erreus (validators)
+
+etape next
+mettre en place le register dans le service auth (appel api observable  + abonnement)  si ok redirection, sinon message d'erreur
+
+si erreur 400 => message -->

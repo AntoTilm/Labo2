@@ -1,7 +1,7 @@
 export interface iUser {
-    pseudo : string;
-    email : string;
-    password : string;
-    lastName : string;
-    firstName : string;
+    pseudo : string | null;
+    email : string | null;
+    password : string | null;
+    lastName : string | null;
+    firstName : string | null;
 }

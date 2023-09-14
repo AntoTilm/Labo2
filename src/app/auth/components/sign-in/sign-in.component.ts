@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { iUser } from '../../models/i-users';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -13,19 +15,15 @@ export class SignInComponent {
   constructor(private formBuilder: FormBuilder, private _authService : AuthService) {}
 
   userForm = this.formBuilder.group({
-    pseudo : [""],
-    email : [""],
-    password : [""],
-    lastName : [""],
-    firstName : [""],
+    pseudo : ["", [Validators.required, Validators.maxLength(50)], []],
+    email : ["", [Validators.required, Validators.maxLength(250), Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')], []],
+    password : ["", [Validators.required, Validators.maxLength(97), Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).{5,}')], []],
+    lastName : ["", [Validators.required, Validators.maxLength(50),], []],
+    firstName : ["", [Validators.required, Validators.maxLength(50)], []],
   })
-
-  postUser () {
-    this._authService.postUser(this.userForm.value?)
-  }
-  
   
   onSubmit(){
     console.log(this.userForm.value);    
+    this._authService.postUser(this.userForm.value)
   }  
 }
