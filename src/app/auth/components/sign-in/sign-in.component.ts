@@ -15,7 +15,7 @@ export class SignInComponent {
   constructor(private formBuilder: FormBuilder, private _authService : AuthService) {}
 
   userForm = this.formBuilder.group({
-    pseudo : ["", [Validators.required, Validators.maxLength(50)], []],
+    pseudo : ["", [Validators.required, Validators.minLength(3), Validators.maxLength(50)], []],
     email : ["", [Validators.required, Validators.maxLength(250), Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')], []],
     password : ["", [Validators.required, Validators.maxLength(97), Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).{5,}')], []],
     lastName : ["", [Validators.required, Validators.maxLength(50),], []],
